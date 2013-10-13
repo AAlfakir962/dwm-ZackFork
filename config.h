@@ -49,12 +49,13 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *chromium[] = { "chromium-browser", NULL };
+static const char *termin[] = { "terminology", NULL };
 //static const char *suspend[] = { "pm-suspend", NULL };
 
 static Key keys[] = {
         /* modifier                     key        function        argument */
         { MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-        { MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
+        { MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termin } },
         { MODKEY|ShiftMask,             XK_a,      spawn,          {.v = chromium } },//doesnt work
         //{ MODKEY|ControlMask            XK_s,      
         { MODKEY,                       XK_b,      togglebar,      {0} },
