@@ -25,7 +25,7 @@ static const Rule rules[] = {
 /* layout(s) */
 static const float mfact      = 0.55; /* factor of master area size [0.05..0.95] */
 static const int nmaster      = 1;    /* number of clients in master area */
-static const Bool resizehints = True; /* True means respect size hints in tiled resizals */
+static const Bool resizehints = False; /* True means respect size hints in tiled resizals */
 static const Layout layouts[] = {
         /* symbol     arrange function */
         { "[]=",      tile },    /* first entry is default */
@@ -48,11 +48,15 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "st", NULL };
+static const char *chromium[] = { "chromium-browser", NULL };
+//static const char *suspend[] = { "pm-suspend", NULL };
 
 static Key keys[] = {
         /* modifier                     key        function        argument */
         { MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
         { MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
+        { MODKEY|ShiftMask,             XK_a,      spawn,          {.v = chromium } },//doesnt work
+        //{ MODKEY|ControlMask            XK_s,      
         { MODKEY,                       XK_b,      togglebar,      {0} },
         { MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
         { MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -84,7 +88,6 @@ static Key keys[] = {
         TAGKEYS(                        XK_8,                      7)
         TAGKEYS(                        XK_9,                      8)
         { MODKEY|ShiftMask,             XK_q,      quit,           {0} },
-    { MODKEY|Shiftmask,             XK_a,       spawn,         {.v = chromium-browser } },
 };
 
 /* button definitions */
