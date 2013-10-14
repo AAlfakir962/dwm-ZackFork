@@ -1,0 +1,11 @@
+[Desktop Entry]
+
+Encoding=UTF-8
+
+Name=dwm-experimental
+
+Comment=This session starts dwm
+
+Exec=/home/zachary/.xinitrc
+
+Type=Application

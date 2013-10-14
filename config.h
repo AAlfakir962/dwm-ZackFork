@@ -18,9 +18,11 @@ static const Rule rules[] = {
          *      WM_CLASS(STRING) = instance, class
          *      WM_NAME(STRING) = title
          */
-        /* class      instance    title       tags mask     isfloating   monitor */
-        { "Gimp",     NULL,       NULL,       0,            True,        -1 },
-        { "Firefox",  NULL,       NULL,       1 << 8,       False,       -1 },
+        /* class                instance    title       tags mask     isfloating   monitor */
+        { "Gimp",               NULL,       NULL,       0,            True,        -1 },
+        { "Firefox",            NULL,       NULL,       1 << 8,       False,       -1 },
+        { "Chromium-browser",   NULL,       NULL,       1 << 0,       False,       -1 },
+        { "XTerm",              NULL,       NULL,       1 << 8,       False,       -1 },
 };
 /* layout(s) */
 static const float mfact      = 0.55; /* factor of master area size [0.05..0.95] */
@@ -50,13 +52,16 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", font, "-nb
 static const char *termcmd[]  = { "st", NULL };
 static const char *chromium[] = { "chromium-browser", NULL };
 static const char *termin[] = { "terminology", NULL };
+//static const char *htop[] = { "xterm", "-e", "htop", NULL };
+//static const char *wicd[] = { "xterm", "-e", "wicd-curses", NULL };
+//static const char *tuxsay[] = {"xterm", "-e", "/home/zachary/Scripts/tuxsay", "&", NULL };
 //static const char *suspend[] = { "pm-suspend", NULL };
 
 static Key keys[] = {
         /* modifier                     key        function        argument */
         { MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
         { MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termin } },
-        { MODKEY|ShiftMask,             XK_a,      spawn,          {.v = chromium } },//doesnt work
+        { MODKEY|ShiftMask,             XK_a,      spawn,          {.v = chromium } },
         //{ MODKEY|ControlMask            XK_s,      
         { MODKEY,                       XK_b,      togglebar,      {0} },
         { MODKEY,                       XK_j,      focusstack,     {.i = +1 } },

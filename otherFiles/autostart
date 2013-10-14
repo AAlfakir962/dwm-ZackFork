@@ -1,0 +1,8 @@
+#!/bin/bash
+sleep 5s
+chromium-browser&
+xterm -e "/home/zachary/Scripts/tuxsay ; bash"&
+sleep 1s
+xterm -e wicd-curses&
+sleep 1s
+xterm -e htop&
