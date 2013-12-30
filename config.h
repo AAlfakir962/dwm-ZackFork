@@ -23,6 +23,7 @@ static const Rule rules[] = {
         { "Firefox",            NULL,       NULL,       1 << 8,       False,       -1 },
         { "Chromium-browser",   NULL,       NULL,       1 << 0,       False,       -1 },
         { "XTerm",              NULL,       NULL,       1 << 8,       False,       -1 },
+        { "TeamViewer",         NULL,       NULL,       1 << 4,       True,        -1 },
 };
 /* layout(s) */
 static const float mfact      = 0.55; /* factor of master area size [0.05..0.95] */
@@ -30,7 +31,7 @@ static const int nmaster      = 1;    /* number of clients in master area */
 static const Bool resizehints = False; /* True means respect size hints in tiled resizals */
 static const Layout layouts[] = {
         /* symbol     arrange function */
-        { "[]=",      tile },    /* first entry is default */
+        { "[+]=",      tile },    /* first entry is default */
         { "><>",      NULL },    /* no layout function means floating behavior */
         { "[M]",      monocle },
 };
@@ -51,7 +52,8 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *chromium[] = { "chromium-browser", NULL };
-static const char *termin[] = { "terminology", NULL };
+static const char *term[] = { "terminator", NULL };
+static const char *team[]     = { "teamviewerd", NULL };
 //static const char *htop[] = { "xterm", "-e", "htop", NULL };
 //static const char *wicd[] = { "xterm", "-e", "wicd-curses", NULL };
 //static const char *tuxsay[] = {"xterm", "-e", "/home/zachary/Scripts/tuxsay", "&", NULL };
@@ -60,9 +62,9 @@ static const char *termin[] = { "terminology", NULL };
 static Key keys[] = {
         /* modifier                     key        function        argument */
         { MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-        { MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termin } },
+        { MODKEY|ShiftMask,             XK_Return, spawn,          {.v = term } },
         { MODKEY|ShiftMask,             XK_a,      spawn,          {.v = chromium } },
-        //{ MODKEY|ControlMask            XK_s,      
+        //{ MODKEY|ControlMask            XK_s,
         { MODKEY,                       XK_b,      togglebar,      {0} },
         { MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
         { MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
